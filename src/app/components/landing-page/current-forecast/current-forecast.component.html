@@ -6,6 +6,8 @@
             <h2 class="weather-name">{{currentWeather.weather[0].main}}</h2>
             <p class="city-name">{{currentWeather.name}}</p>
             <h1 class="temp">{{math.round(currentWeather.main.temp)}} &#8451;</h1>
+            <fa-icon [icon]="faMapMarkerAlt" class="location-icon" (click)="openSearchModal()"></fa-icon>
+            <span class="search-location-span">Search for another location</span>
         </div>
         <div class="secondary-content">
             <p>Humidity</p>

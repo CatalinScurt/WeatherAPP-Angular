@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { WeatherService } from 'src/app/services/weather.service';
 import { Subject } from 'rxjs';
 import { CurrentWeather } from 'src/app/interfaces/CurrentWeather';
@@ -20,6 +20,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   currentWeather?: CurrentWeather
+  isSearchModalOpened: boolean = false
 
   ngOnInit(): void {
     this.getPosition()
@@ -37,5 +38,9 @@ export class LandingPageComponent implements OnInit {
   getWeatherForCurrentLocation = (lat: number, lon: number) => {
     let query = `lat=${lat}&lon=${lon}`
     this.weatherService.getCurrentWeather(query)
+  }
+
+  handleOnChangeSearchModalState = (event: boolean) => {
+    this.isSearchModalOpened = event
   }
 }

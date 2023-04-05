@@ -11,21 +11,30 @@ import { WeatherService } from 'src/app/services/weather.service';
 export class CityPageComponent implements OnInit {
 
   constructor(private weatherService: WeatherService, private route: ActivatedRoute, private router: Router) {
+
     weatherService.handleOnSetCurrentWeather.subscribe((data: CurrentWeather) => {
       this.currentWeather = data
     })
   }
 
   currentWeather?: CurrentWeather
+  isSearchModalOpened: boolean = false
 
   ngOnInit(): void {
+    this.checkRouteParams()
+  }
+
+  checkRouteParams = () => {
     this.route.params.subscribe((params) => {
       if (params['city']) {
         let query = `q=${params['city']}`
         this.weatherService.getCurrentWeather(query)
       }
-      else
-        this.router.navigate([''])
     })
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;  //for refresh content on navigate in the same page
+  }
+
+  handleOnChangeSearchModalState = (event: boolean) => {
+    this.isSearchModalOpened = event
   }
 }

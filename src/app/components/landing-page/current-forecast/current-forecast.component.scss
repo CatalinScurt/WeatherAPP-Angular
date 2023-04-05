@@ -47,6 +47,21 @@
             font-size: 36px;
             font-weight: bold;
         }
+
+        .location-icon {
+            color: white;
+            cursor: pointer;
+
+            &:hover {
+                font-size: 20px;
+            }
+        }
+
+        .search-location-span {
+            margin-left: 10px;
+            color: white;
+            font-weight: 600;
+        }
     }
 
     .secondary-content {

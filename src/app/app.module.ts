@@ -9,6 +9,7 @@ import { NoLocationComponent } from './components/landing-page/no-location/no-lo
 import { CurrentForecastComponent } from './components/landing-page/current-forecast/current-forecast.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CityPageComponent } from './pages/city-page/city-page.component';
+import { SearchModalComponent } from './components/landing-page/search-modal/search-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CityPageComponent } from './pages/city-page/city-page.component';
     LandingPageComponent,
     NoLocationComponent,
     CurrentForecastComponent,
-    CityPageComponent
+    CityPageComponent,
+    SearchModalComponent
   ],
   imports: [
     BrowserModule,

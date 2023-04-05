@@ -1,0 +1,8 @@
+<section class="search-modal-wrapper" (click)="handleOnCloseSearchModal()">
+    <div class="search-modal-content {{closing ? 'slide-back':''}}" (click)="stopPropagation($event)">
+        <fa-icon [icon]="faWindowClose" class="close-icon" (click)="handleOnCloseSearchModal()"></fa-icon>
+        <input type="text" class="search-input" placeholder="Type a location here..."
+            (keyup)="handleChangeSearchInput($event)">
+        <button class="search-button" (click)="searchForLocation()">Search</button>
+    </div>
+</section>

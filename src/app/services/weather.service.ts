@@ -14,7 +14,10 @@ export class WeatherService {
   handleOnSetCurrentWeather: Subject<CurrentWeather> = new Subject<CurrentWeather>()
 
   constructor(private apiService: ApiService) {
-    this.handleOnSetCurrentWeather.subscribe((value: CurrentWeather) => this.currentWeather = value)
+    this.handleOnSetCurrentWeather.subscribe((value: CurrentWeather) => {
+      console.log(value.weather[0], "from service")
+      this.currentWeather = value
+    })
   }
 
   /**
