@@ -1,0 +1,7 @@
+<ng-template [ngIf]="currentWeather" [ngIfElse]="noLocation">
+    <app-current-forecast [currentWeather]="currentWeather"></app-current-forecast>
+</ng-template>
+
+<ng-template #noLocation>
+    <app-no-location></app-no-location>
+</ng-template>
