@@ -1,0 +1,128 @@
+.page-wrapper {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+
+    .weather-today {
+        background-color: rgba(255, 255, 255, 0.5);
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+        width: 90%;
+
+        .weather-right-now {
+            flex: 2;
+            background-color: red;
+        }
+
+        .weather-cart {
+            background-color: aqua;
+        }
+
+        .equal {
+            flex: 1;
+        }
+    }
+}
+
+.future-weather {
+    // display: flex;
+    // flex-direction: column;
+    // width: 100vw;
+    background-color: red;
+    // overflow: hidden;
+    // position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .slider {
+        display: flex;
+        flex-direction: row;
+        // margin: 0px 10px;
+        width: 90%;
+        overflow: hidden;
+        // margin-left: 10%;
+        // overflow: hidden;
+
+
+        .daily-weather {
+            transform: translateX(-100%);
+            display: flex;
+            flex-direction: row;
+            background-color: aqua;
+            width: 100%;
+            margin: auto;
+            flex-shrink: 0;
+            transition: transform 0.5s ease-in-out;
+            -webkit-transition: transform 0.5s ease-in-out;
+
+            .hourly-weather {
+                // width: 8vw;
+                background-color: green;
+                margin-top: 50px;
+            }
+
+            .equal {
+                flex: 1;
+            }
+        }
+    }
+
+}
+
+.next-button {
+    position: absolute;
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    font-weight: 600;
+    right: 0;
+    cursor: pointer;
+
+    &:hover {
+        background-color: white;
+        color: black;
+    }
+}
+
+.prev-button {
+    position: absolute;
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    font-weight: 600;
+    left: 0;
+    cursor: pointer;
+
+    &:hover {
+        background-color: white;
+        color: black;
+    }
+}
+
+// .test-slider {
+//     // overflow: auto;
+//     margin-top: 50px;
+//     display: flex;
+//     flex-direction: row;
+//     background-color: green;
+
+//     .slider-item {
+//         width: 90vw;
+//         margin: 0px 5vw;
+//         height: 100px;
+//         background-color: red;
+//         display: flex;
+//         flex-shrink: 0;
+
+//         .item {
+//             // position: absolute;
+//             background-color: blue;
+//             flex: 1;
+//             // width: 100px;
+//             margin-left: 5px;
+//             // width: 8vw;
+//         }
+//     }
+// }

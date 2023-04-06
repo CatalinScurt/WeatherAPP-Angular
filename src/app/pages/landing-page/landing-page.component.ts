@@ -3,6 +3,7 @@ import { WeatherService } from 'src/app/services/weather.service';
 import { Subject } from 'rxjs';
 import { CurrentWeather } from 'src/app/interfaces/CurrentWeather';
 import { ActivatedRoute } from '@angular/router';
+import { Weather } from 'src/app/interfaces/Weather';
 
 @Component({
   selector: 'app-landing-page',
@@ -17,8 +18,13 @@ export class LandingPageComponent implements OnInit {
     this.weatherService.handleOnSetCurrentWeather.subscribe(
       (data: CurrentWeather) => this.currentWeather = data
     )
+
+    this.weatherService.handleOnSetWeather.subscribe(
+      (data: Weather) => this.weather = data
+    )
   }
 
+  weather?: Weather
   currentWeather?: CurrentWeather
   isSearchModalOpened: boolean = false
 
@@ -36,8 +42,10 @@ export class LandingPageComponent implements OnInit {
   }
 
   getWeatherForCurrentLocation = (lat: number, lon: number) => {
-    let query = `lat=${lat}&lon=${lon}`
-    this.weatherService.getCurrentWeather(query)
+    // let query = `lat=${lat}&lon=${lon}`
+    // this.weatherService.getCurrentWeather(query)
+    let query = `${lat},${lon}`
+    this.weatherService.getWeather(query)
   }
 
   handleOnChangeSearchModalState = (event: boolean) => {

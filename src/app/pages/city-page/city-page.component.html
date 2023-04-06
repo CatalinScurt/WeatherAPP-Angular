@@ -1,4 +1,4 @@
-<app-current-forecast *ngIf="currentWeather" [currentWeather]="currentWeather"
+<app-current-forecast *ngIf="weather" [weather]="weather"
     (updateSearchModalState)="handleOnChangeSearchModalState($event)"></app-current-forecast>
 <app-search-modal *ngIf="isSearchModalOpened"
     (updateSearchModalState)="handleOnChangeSearchModalState($event)"></app-search-modal>

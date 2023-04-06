@@ -14,6 +14,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CityPageComponent } from './pages/city-page/city-page.component';
 import { SearchModalComponent } from './components/landing-page/search-modal/search-modal.component';
 import { TestComponent } from './pages/test/test.component';
+import { DetailedForecastComponent } from './pages/detailed-forecast/detailed-forecast.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TestComponent } from './pages/test/test.component';
     CityPageComponent,
     SearchModalComponent,
     TestComponent,
+    DetailedForecastComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,69 @@
+<!-- <section class="page-wrapper" *ngIf="weather">
+    <div class="weather-today">
+        <div class="weather-right-now">
+            <p>Right Now</p>
+            <img src="http:{{weather.current.condition.icon}}" alt="">
+            <p>{{weather.current.temp_c}} &#8451;</p>
+        </div>
+        <div *ngFor="let todayWeather of weather.forecast.forecastday[0].hour; let i = index; let even = even"
+            class="weather-cart {{even && Number(todayWeather.time.split(' ')[1].slice(0,2))>Number(weather.current.last_updated.split(' ')[1].slice(0,2)) ? 'even':''}}">
+            <span
+                *ngIf="even && Number(todayWeather.time.split(' ')[1].slice(0,2))>Number(weather.current.last_updated.split(' ')[1].slice(0,2))">
+                <p> {{todayWeather.time.split(' ')[1]}}</p>
+                <img src="https:{{todayWeather.condition.icon}}" alt="">
+                <p>{{Math.round(todayWeather.temp_c)}} &#8451;</p>
+            </span>
+        </div>
+    </div>
+
+    <div class="future-weather">
+        <h1>Weather for next days:</h1>
+        <div *ngFor="let weather of weather.forecast.forecastday; let i=index" class="daily-weather">
+            <div *ngFor="let hourWeather of weather.hour;let even = even" class="hourly-weather {{even ? 'even':''}}">
+                <span *ngIf="even && i>0">
+                    <p> {{hourWeather.time.split(' ')[1]}}</p>
+                    <img src="https:{{hourWeather.condition.icon}}" alt="">
+                    <p>{{Math.round(hourWeather.temp_c)}} &#8451;</p>
+                </span>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<section class="page-wrapper" *ngIf="weather">
+    <div class="weather-today">
+        <div class="weather-right-now">
+            <p>Right Now</p>
+            <img src="http:{{weather.current.condition.icon}}" alt="">
+            <p>{{weather.current.temp_c}} &#8451;</p>
+        </div>
+        <div *ngFor="let todayWeather of weather.forecast.forecastday[0].hour; let i = index"
+            class="weather-cart {{Number(todayWeather.time.split(' ')[1].slice(0,2))>Number(weather.current.last_updated.split(' ')[1].slice(0,2))? 'equal':''}}">
+            <span
+                *ngIf="Number(todayWeather.time.split(' ')[1].slice(0,2))>Number(weather.current.last_updated.split(' ')[1].slice(0,2))">
+                <p> {{todayWeather.time.split(' ')[1]}}</p>
+                <img src="https:{{todayWeather.condition.icon}}" alt="">
+                <p>{{Math.round(todayWeather.temp_c)}} &#8451;</p>
+            </span>
+        </div>
+    </div>
+
+    <h1>Weather for next days:</h1>
+    <span (click)="handleOnClickNextDay()" class="next-button">Next</span>
+    <span (click)="handleOnClickPrevDay()" class="prev-button">Prev</span>
+    <div class="future-weather">
+        <div class="slider">
+            <div *ngFor="let weather of weather.forecast.forecastday; let i=index" class="daily-weather"
+                [ngStyle]="getPosition()">
+                <p style="position: absolute;">{{weekDays[(currentDay+i)%7]}}</p>
+                <div *ngFor="let hourWeather of weather.hour" class="hourly-weather equal">
+                    <span *ngIf="i>0">
+                        <p> {{hourWeather.time.split(' ')[1]}}</p>
+                        <img src="https:{{hourWeather.condition.icon}}" alt="">
+                        <p>{{Math.round(hourWeather.temp_c)}} &#8451;</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

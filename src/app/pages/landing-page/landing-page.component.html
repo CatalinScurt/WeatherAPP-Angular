@@ -1,5 +1,5 @@
-<ng-template [ngIf]="currentWeather" [ngIfElse]="noLocation">
-    <app-current-forecast [currentWeather]="currentWeather"
+<ng-template [ngIf]="weather" [ngIfElse]="noLocation">
+    <app-current-forecast [weather]="weather"
         (updateSearchModalState)="handleOnChangeSearchModalState($event)"></app-current-forecast>
 </ng-template>
 
