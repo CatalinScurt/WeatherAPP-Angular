@@ -15,7 +15,7 @@ export class NoLocationComponent implements OnInit {
   }
 
   getWeatherFromDefaultLocation = () => {
-    let query = `q=${this.weatherService.defaultLocation}`
-    this.weatherService.getCurrentWeather(query)
+    let query = `${this.weatherService.defaultLocation}`
+    this.weatherService.getWeather(query)
   }
 }

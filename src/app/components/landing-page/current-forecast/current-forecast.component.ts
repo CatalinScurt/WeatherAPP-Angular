@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { CurrentWeather } from 'src/app/interfaces/CurrentWeather';
+import { Weather } from 'src/app/interfaces/Weather';
 
 // import {
 //   faCloudRain,
@@ -35,31 +37,40 @@ export class CurrentForecastComponent implements OnInit {
   math = Math
   customWeatherIcons = customWeatherIcons
   faMapMarkerAlt = faMapMarkerAlt
-
-  constructor() { }
+  routeParam: string = ''
+  constructor(
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe((params) => {
+      if (params['city']) {
+        this.routeParam = params['city']
+      }
+    })
+  }
 
   currentForecastIcon = customWeatherIcons['01d']
 
-  @Input() currentWeather?: CurrentWeather
+  // @Input() currentWeather?: CurrentWeather
+  @Input() weather?: Weather
 
   iconList: any = []
   @Output() updateSearchModalState = new EventEmitter<boolean>()
 
   ngOnInit(): void {
-    this.changeWeatherIcon()
-    console.log(this.currentWeather?.weather[0], 'from Curent')
+    // this.changeWeatherIcon()
+    // console.log(this.currentWeather?.weather[0], 'from Curent')
   }
 
-  changeWeatherIcon = () => {
-    let key: keyof typeof customWeatherIcons
+  // changeWeatherIcon = () => {
+  //   let key: keyof typeof customWeatherIcons
 
-    for (key in customWeatherIcons) {
-      this.iconList.push(customWeatherIcons[key])
-      if (this.currentWeather?.weather[0].icon === key) {
-        this.currentForecastIcon = customWeatherIcons[key]
-      }
-    }
-  }
+  //   for (key in customWeatherIcons) {
+  //     this.iconList.push(customWeatherIcons[key])
+  //     if (this.currentWeather?.weather[0].icon === key) {
+  //       this.currentForecastIcon = customWeatherIcons[key]
+  //     }
+  //   }
+  // }
 
   openSearchModal = () => {
     this.updateSearchModalState.emit(true)
