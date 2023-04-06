@@ -1,0 +1,18 @@
+<section class="test-section">
+    <input type="text" (keyup)="inputChange($event)">
+    <button (click)="handleSearch()">Search</button>
+    <mat-icon svgIcon="weather-lightning" style="color: white;"></mat-icon>
+    <h1>TEST</h1>
+    <div class="flex-row" *ngIf="weather">
+        <div *ngFor="let w of weather">
+            <img *ngFor="let h of w.hour" src="{{h.condition.icon}}" alt="" class="img">
+        </div>
+        <!-- <img *ngFor="let w of weather" src="{{w.day.condition.icon}}" alt=""> -->
+    </div>
+</section>
+<!-- response.forecast.forecastday.forEach((element: any) => {
+    //   // console.log(element.hour[0].condition.icon)
+    //   element.hour.forEach((hour: any) => {
+    //     console.log(hour.condition.icon)
+    //   })
+    // }); -->

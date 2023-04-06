@@ -23,4 +23,11 @@ export class ApiService {
   get(query: string): Observable<CurrentWeather> {
     return this.httpClient.get<CurrentWeather>(`${this.baseURL}${query}&appid=${this.apiKey}&units=${this.units}`)
   }
+
+  getTest(query: string): Observable<any> {
+    // return this.httpClient.get(`http://api.weatherapi.com/v1/current.json?key=b8728d0881cd4fa6acc53116230504&q=${query}&aqi=no
+    // `)
+    return this.httpClient.get(`http://api.weatherapi.com/v1/forecast.json?key=b8728d0881cd4fa6acc53116230504&q=${query}&days=3&aqi=no
+    `)
+  }
 }

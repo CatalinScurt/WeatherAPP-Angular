@@ -35,4 +35,8 @@ export class WeatherService {
       error: (err) => console.log(err)
     })
   }
+
+  fetchTest = (query: string): Observable<any> => {
+    return this.apiService.getTest(query)
+  }
 }
