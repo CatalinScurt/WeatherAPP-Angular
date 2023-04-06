@@ -1,0 +1,30 @@
+<section *ngIf="currentWeather" class="landing-page-wrapper">
+    <div class="current-forecast">
+        <div class="main-content">
+            <!-- <img src="https://openweathermap.org/img/wn/{{currentWeather.weather[0].icon}}@2x.png" alt=""> -->
+            <fa-icon [icon]="currentForecastIcon" class="current-weather-icon"></fa-icon>
+            <h2 class="weather-name">{{currentWeather.weather[0].main}}</h2>
+            <p class="city-name">{{currentWeather.name}}</p>
+            <h1 class="temp">{{math.round(currentWeather.main.temp)}} &#8451;</h1>
+            <fa-icon [icon]="faMapMarkerAlt" class="location-icon" (click)="openSearchModal()"></fa-icon>
+            <span class="search-location-span">Search for another location</span>
+        </div>
+        <div class="secondary-content">
+            <p>Humidity</p>
+            <h1>{{currentWeather.main.humidity}} %</h1>
+            <p>Air Pressure</p>
+            <h1>{{currentWeather.main.pressure}} PS</h1>
+            <p>Wind Speed</p>
+            <h1>{{currentWeather.wind.speed}} meter/sec</h1>
+            <fa-icon [icon]="customWeatherIcons['01n']"></fa-icon>
+            <!-- <fa-icon [icon]="this.customWeatherIcons['{{currentWeather.weather[0].icon}}' || '01d']"></fa-icon> -->
+            <fa-icon *ngFor="let icon of iconList" [icon]="icon"></fa-icon>
+        </div>
+    </div>
+    <div class="daily-forecast"></div>
+    <!-- <div class="content">
+        <img *ngIf="currentWeather" src="https://openweathermap.org/img/wn/{{currentWeather.weather[0].icon}}@2x.png"
+            alt="">
+        <p>asf</p>
+    </div> -->
+</section>

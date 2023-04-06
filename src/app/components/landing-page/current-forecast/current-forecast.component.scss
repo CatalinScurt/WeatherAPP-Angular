@@ -1,0 +1,72 @@
+.landing-page-wrapper {
+    background-image: url("/assets/images/rain1.jpg");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.current-forecast {
+    display: flex;
+    flex-direction: row;
+    height: 80vh;
+
+    .main-content {
+        background-color: rgba(255, 255, 255, 0.1);
+        flex: 1;
+        padding: 20px 0px 0px 30px;
+
+        >* {
+            margin: 0;
+        }
+
+        img {
+            width: 150px;
+            height: auto;
+        }
+
+        .current-weather-icon {
+            color: white;
+            font-size: 80px;
+        }
+
+        .weather-name {
+            color: white;
+            font-size: 28px;
+            font-weight: 500;
+        }
+
+        .city-name {
+            color: white;
+            font-size: 16px;
+        }
+
+        .temp {
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .location-icon {
+            color: white;
+            cursor: pointer;
+
+            &:hover {
+                font-size: 20px;
+            }
+        }
+
+        .search-location-span {
+            margin-left: 10px;
+            color: white;
+            font-weight: 600;
+        }
+    }
+
+    .secondary-content {
+        background-color: bisque;
+        flex: 1;
+
+    }
+}
