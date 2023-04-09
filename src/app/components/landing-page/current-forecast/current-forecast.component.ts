@@ -1,29 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { CurrentWeather } from 'src/app/interfaces/CurrentWeather';
+import { Theme } from 'src/app/interfaces/Theme';
 import { Weather } from 'src/app/interfaces/Weather';
-
-// import {
-//   faCloudRain,
-//   faCloudSunRain,
-//   faMoon,
-//   faSnowflake,
-//   faCloudMoonRain,
-//   faCloud,
-//   faPooStorm,
-//   faSmog,
-//   faStream,
-//   faCloudSun,
-//   faCloudMoon
-// } from '@fortawesome/free-solid-svg-icons';
-// // import { faSun } from '@fortawesome/free-regular-svg-icons'
-// // import { faSun } from '@fortawesome/angular-fontawesome';
-// // import {  faSun} from '@fortawesome/fontawesome-svg-core';
-// // import { faSun } from '@fortawesome/free-brands-svg-icons';
-// // import { faSun } from '@fortawesome/free-regular-svg-icons'
-// import { faSun } from '@fortawesome/free-solid-svg-icons'
-
+import { ThemeService } from 'src/app/services/theme.service';
+import { day, night } from 'src/app/theme';
+import { codeToTheme } from 'src/CodeToTheme';
 import { customWeatherIcons } from 'src/CustomWeatherIcons';
 
 
@@ -35,12 +18,12 @@ import { customWeatherIcons } from 'src/CustomWeatherIcons';
 export class CurrentForecastComponent implements OnInit {
 
   math = Math
-  customWeatherIcons = customWeatherIcons
-  faMapMarkerAlt = faMapMarkerAlt
-  routeParam: string = ''
-  constructor(
-    private route: ActivatedRoute
-  ) {
+  faHeart = faHeart
+  routeParam?: string
+  weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  currentDay = new Date().getDay()
+
+  constructor(private route: ActivatedRoute) {
     this.route.params.subscribe((params) => {
       if (params['city']) {
         this.routeParam = params['city']
@@ -56,9 +39,14 @@ export class CurrentForecastComponent implements OnInit {
   iconList: any = []
   @Output() updateSearchModalState = new EventEmitter<boolean>()
 
+  favoriteCities: string[] = []
+
   ngOnInit(): void {
     // this.changeWeatherIcon()
     // console.log(this.currentWeather?.weather[0], 'from Curent')
+    const localStorageItems = localStorage.getItem('favoriteCities')
+    if (localStorageItems) this.favoriteCities = JSON.parse(localStorageItems)
+    console.log(this.favoriteCities)
   }
 
   // changeWeatherIcon = () => {
@@ -71,9 +59,30 @@ export class CurrentForecastComponent implements OnInit {
   //     }
   //   }
   // }
+  handleOnClickHeartButton = () => {
+    if (this.weather && !this.favoriteCities.includes(this.weather?.location.name)) {
+      this.favoriteCities.push(this.weather?.location.name)
+      localStorage.setItem('favoriteCities', JSON.stringify(this.favoriteCities))
+    } else {
+      this.favoriteCities = this.favoriteCities.filter(city => city !== this.weather?.location.name)
+      localStorage.setItem('favoriteCities', JSON.stringify(this.favoriteCities))
+    }
+  }
 
   openSearchModal = () => {
     this.updateSearchModalState.emit(true)
   }
 
+  getHeartColor = () => {
+    return {
+      'color': this.weather && this.favoriteCities.includes(this.weather?.location.name) ? 'red' : 'white'
+    }
+  }
+
 }
+
+
+// poaie
+// soare
+// noros
+// zapada

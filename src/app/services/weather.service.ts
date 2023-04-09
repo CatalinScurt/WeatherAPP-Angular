@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Observable, Subject } from 'rxjs';
 import { CurrentWeather } from '../interfaces/CurrentWeather';
-import { Weather } from '../interfaces/Weather';
+import { Current, Weather } from '../interfaces/Weather';
+import { ThemeService } from './theme.service';
+import { codeToTheme } from 'src/CodeToTheme';
+import { Theme } from '../interfaces/Theme';
+import { day, night } from '../theme';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +20,10 @@ export class WeatherService {
   handleOnSetCurrentWeather: Subject<CurrentWeather> = new Subject<CurrentWeather>()
   handleOnSetWeather: Subject<Weather> = new Subject<Weather>()
 
-  constructor(private apiService: ApiService) {
+  constructor(
+    private apiService: ApiService,
+    private themeService: ThemeService
+  ) {
     this.handleOnSetCurrentWeather.subscribe((value: CurrentWeather) => {
       console.log(value.weather[0], "from service")
       this.currentWeather = value
@@ -24,6 +31,7 @@ export class WeatherService {
     this.handleOnSetWeather.subscribe((value: Weather) => {
       this.weather = value
       console.log(this.weather.forecast.forecastday[0].hour, "service")
+      this.checkForWeatherCode(value.current)
     })
   }
 
@@ -61,4 +69,17 @@ export class WeatherService {
   fetchTest = (query: string): Observable<any> => {
     return this.apiService.getTest(query)
   }
+
+  checkForWeatherCode = (currentWeather: Current) => {
+    let code = currentWeather.condition.code.toString()
+    let key: keyof typeof codeToTheme
+    for (key in codeToTheme)
+      if (key === code)
+        this.themeService.setActiveTheme(this.checkForDayOrNight(currentWeather.is_day), codeToTheme[key] as keyof Theme)
+  }
+
+  checkForDayOrNight = (isDay: number) => {
+    return isDay === 1 ? day : night
+  }
+
 }

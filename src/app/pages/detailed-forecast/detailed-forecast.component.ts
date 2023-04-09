@@ -67,6 +67,8 @@ export class DetailedForecastComponent implements OnInit {
 
   handleOnClickNextDay = () => {
     this.weather && this.currentPosition < (this.weather?.forecast.forecastday.length - 1) * 100 ? this.currentPosition += 100 : this.currentPosition = 100
+    console.log(this.currentPosition)
+
   }
   handleOnClickPrevDay = () => {
     (this.currentPosition > 100) ? (this.currentPosition -= 100) : (this.currentPosition = ((this.weather?.forecast.forecastday.length || 0) - 1) * 100)
