@@ -1,10 +1,14 @@
 <section class="test-section">
     <input type="text" (keyup)="inputChange($event)">
     <button (click)="handleSearch()">Search</button>
-    <mat-icon svgIcon="weather-lightning" style="color: white;"></mat-icon>
+    <mat-icon svgIcon="map-marker-outline" style="color: white;"></mat-icon>
     <h1>TEST</h1>
+    <i class="uil uil-thunderstorm-sun" style="color: red; font-size: 150px;"></i>
+    <i class="uil uil-cloud" style="color: red; font-size: 150px;"></i>
+    <i *ngFor="let icon of customIcons| keyvalue" class="{{icon.value[0]}}"></i>
     <div class="flex-row" *ngIf="weather">
         <div *ngFor="let w of weather">
+            <!-- <i class="{{customIcons[h.condition.code][0]}}"></i> -->
             <img *ngFor="let h of w.hour" src="{{h.condition.icon}}" alt="" class="img">
         </div>
         <!-- <img *ngFor="let w of weather" src="{{w.day.condition.icon}}" alt=""> -->

@@ -1,29 +1,71 @@
-.landing-page-wrapper {
-    background-image: url("/assets/images/rain1.jpg");
+.landing-page {
+    // background-image: url("/assets/images/sun1-blur.jpg");
+    background-color: rgb(194, 194, 194);
     background-size: cover;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
     height: 100vh;
-    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-page-wrapper {
+    background-image: var(--background-image);
+    background-position: var(--background-position);
+    background-size: cover;
+    width: 90%;
+    height: 90%;
+    max-width: 2000px;
+    max-height: 1000px;
+    box-shadow: 1px 10px 20px black;
+    position: relative;
+
+    .heart {
+        position: absolute;
+        top: 30px;
+        right: 50px;
+        font-size: 35px;
+        cursor: pointer;
+        transition: color .3s linear;
+
+        &:hover {
+            color: red;
+        }
+    }
 }
 
 .current-forecast {
     display: flex;
     flex-direction: row;
-    height: 80vh;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.15);
 
     .main-content {
-        background-color: rgba(255, 255, 255, 0.1);
         flex: 1;
         padding: 20px 0px 0px 30px;
 
+        .right-now {
+            width: 500px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
         >* {
-            margin: 0;
+            padding-top: 10px;
         }
 
         img {
-            width: 150px;
+            width: 130px;
             height: auto;
+            padding-bottom: 05px;
+        }
+
+        .weather-name {
+            padding-top: 28px;
+            padding-left: 25px;
+            color: var(--text-color);
+            width: 150px;
         }
 
         .current-weather-icon {
@@ -31,40 +73,32 @@
             font-size: 80px;
         }
 
-        .weather-name {
-            color: white;
-            font-size: 28px;
-            font-weight: 500;
-        }
-
-        .city-name {
-            color: white;
-            font-size: 16px;
-        }
-
         .temp {
+            padding-top: 20px;
+            padding-left: 30px;
             color: white;
             font-size: 36px;
             font-weight: bold;
         }
 
-        .location-icon {
+        .humidity-label,
+        .air-pressure-label,
+        .wind-speed-label {
+            padding-top: 30px;
             color: white;
-            cursor: pointer;
+            font-size: 17px;
+            font-weight: 500;
 
-            &:hover {
-                font-size: 20px;
+            .humidity,
+            .air-pressure,
+            .wind-speed {
+                font-size: 23px;
+                font-weight: 600;
             }
         }
 
-        .search-location-span {
-            margin-left: 10px;
-            color: white;
-            font-weight: 600;
-        }
-
         .details-button {
-            margin-top: 10px;
+            margin-top: 25px;
             color: white;
             font-weight: 600;
             background-color: black;
@@ -72,6 +106,7 @@
             outline: none;
             border: none;
             cursor: pointer;
+            border-radius: 5px;
 
             &:hover {
                 color: black;
@@ -81,26 +116,96 @@
     }
 
     .secondary-content {
-        background-color: bisque;
         flex: 1;
+        text-align: right;
+        margin: 70px 160px 0px 0px;
+
+        .city-content {
+            padding-bottom: 20px;
+
+            .city-name {
+                color: white;
+                font-size: 40px;
+                font-weight: 600;
+                margin-left: 10px;
+            }
+
+            i {
+                color: white;
+                font-size: 25px;
+            }
+        }
+
+        .search-content {
+            cursor: pointer;
+
+            span {
+                margin-left: 10px;
+                color: rgb(218, 218, 218);
+                font-weight: 600;
+                font-size: 16px;
+                margin-top: 20px;
+            }
+
+            i {
+                color: rgb(218, 218, 218);
+                font-size: 15px;
+            }
+
+            &:hover {
+                >* {
+                    color: white;
+                }
+            }
+        }
+
+        .favorite-cities-list {
+            // background-color: red;
+            text-align: right;
+            display: flex;
+            align-items: end;
+            flex-direction: column;
+            margin-top: 30px;
+
+            .favorite-city {
+                font-size: 18px;
+                width: 150px;
+                background-color: rgba(0, 0, 0, 0.6);
+                color: white;
+                padding: 5px 0px;
+                font-weight: 600;
+                border-radius: 10px;
+                text-align: center;
+                margin-bottom: 10px;
+                transition: all .3s linear;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.4);
+                    color: black;
+                }
+            }
+        }
 
     }
 }
 
 .daily-forecast {
-    width: 100vw;
-    height: 20vh;
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.795);
     display: flex;
     flex-direction: row;
+    position: absolute;
+    bottom: 0;
+    padding: 10px 0px;
+
 
     .day {
         flex: 1;
-        border: 1px solid red;
+        text-align: center;
 
         >* {
-            margin: 0;
-            padding: 0;
+            padding-top: 7px;
         }
 
         &:first-child {
@@ -111,8 +216,14 @@
             color: white;
         }
 
+        img {
+            width: 70px;
+        }
+
         .temp {
             color: white;
+            font-size: 18px;
+            font-weight: 600;
         }
     }
 
