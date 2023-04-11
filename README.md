@@ -16,7 +16,7 @@
 ## To run this application:
 
 You can access the next link to see the live version: https://weather-app-angular.web.app
-`OR...`
+- `OR...`
 You cand clone this project and run the app locally, and to do this, you need to make the following steps:
 - run: git clone https://github.com/CatalinScurt/WeatherAPP-Angular.git
 - after the clone you need to run "npm install" on the root directory.
@@ -24,30 +24,33 @@ You cand clone this project and run the app locally, and to do this, you need to
 
 ## Functionality:
 
-When you run the application for the first time, a message will apear on the top-left corner, and ask for your permission to access your location. 
+When you run the application for the first time, a message will appear on the top-left corner, and ask for your permission to access your location. 
 
+![accept-location](https://user-images.githubusercontent.com/72908672/231210430-8142f2e2-3535-4cc3-ab7b-b9f5f5fd7287.jpg)
 
 If you accept, you will be redirected to the landing page where you will see the weather for your current location. If you don't accept, you can click on the link from page content to go on the page with weather for the default location (this location is Cluj-Napoca).
 
 The landing page looks like this: 
 
+![landing-page-description](https://user-images.githubusercontent.com/72908672/231210821-790bc320-1166-460f-9d3a-846a5d275089.jpg)
 
-1: Current city (or city that you are searching for)
-2: Search button - by clicking in this area a popup will open where you can search for another location.
-3: Heart icon - from there you can add the displayed city (from 1.) to the favorite list. If the city is already on this list, the heart will be red, and you can delete the city from the same icon.
-4: Favorite city list. This list will appear only if you have at least one city as favorite. By clicking the button with city name you will be redirect on that city page.
-5: Details button: by clicking this button you will be redirect on the page with 7 days hourly forecast.
-6: 7 days forecast.
-
+- 1: Current city (or city that you are searching for)
+- 2: Search button - by clicking in this area a popup will open where you can search for another location.
+- 3: Heart icon - from there you can add the displayed city (from 1.) to the favorite list. If the city is already on this list, the heart will be red, and you can delete the city from the same icon.
+- 4: Favorite city list. This list will appear only if you have at least one city as favorite. By clicking the button with city name you will be redirect on that city page.
+- 5: Details button: by clicking this button you will be redirect on the page with 7 days hourly forecast.
+- 6: 7 days forecast.
 
 The page with hourly forecast looks like this:
 
+![details-page](https://user-images.githubusercontent.com/72908672/231210901-6398d80c-c255-44e1-bdfe-5b863dca408b.jpg)
 
-1: Current day hourly forecast.
-2: A slider with hourly forecast for the next 7 days.
+- 1: Current day hourly forecast.
+- 2: A slider with hourly forecast for the next 7 days.
 
 If you are looking for a non-existent city you will see something like this:
 
+![404-page](https://user-images.githubusercontent.com/72908672/231211165-760563ee-f2c6-434b-a2f6-96a2d101afba.jpg)
 
 By clicking the `Return to the homepage` button you will be redirect to the landing page.
 
