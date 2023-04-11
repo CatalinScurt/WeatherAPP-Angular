@@ -25,3 +25,33 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Mandatory for a running app:
+
+[DONE] Aplicația trebuie sa fie funcționala si să ruleze pe un localhost (node intregration, etc.)
+[DONE] Codul trebuie să fie încărcat si accesibil pe un GitHub/Bitbucket, pentru a îl putea clona și rula.
+[DONE] Aplicația trebuie legata la un Weather API, pentru a avea data reale in aplicație.(datele inițiale ar trebui să fie cu locația actuala)
+[DONE] Aplicația trebuie să fie responsive pentru Desktop cât și pentru Mobile.
+[DONE] Folosirea semantică a elementelor Web.
+
+## Optional features done:
+
+[DONE] Aplicația ar trebui să permită utilizatorului să facă forecast pe mai multe zile/ore. (nu mai mult de 7 zile, si nu mai mult de 24 ore)
+[DONE] Aplicația ar trebui să permită vizualizarea mai multor orașe.
+[DONE] Aplicația ar trebui să permită adăugarea unor orașe ca Favorite.
+[DONE] Aplicația ar trebui să aibă mai multe Teme (themes/desings). (day, night, rain, etc.)
+
+## To run this application:
+
+You can access the next link to see the live version: https://weather-app-angular.web.app
+OR..
+You cand clone this project and run the app localy, and to do this, you need to make the following steps:
+- run: git clone https://github.com/CatalinScurt/WeatherAPP-Angular.git
+- after the clone you need to run "npm install" on the root directory.
+- after all dependencies were installed, you need to run "ng serve" to run the app on localhost.
+
+## Functionality:
+
+When you run the application for the first time, a message will apear on the top-left corner, and ask for your permission to access your location. If you accept, you will be redirected to the landing page where you will see the weather for your current location. If you don't accept, you can click on the link from page content to go on the page with weather for the default location (this location is Cluj-Napoca).
+
+On this page you can add a city to the favorite list by clicking the top-right heart, and from the same icon you can delete a city from favorite list. This list will apear on the right side, under the location.
