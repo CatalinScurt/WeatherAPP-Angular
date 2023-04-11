@@ -54,6 +54,15 @@ If you are looking for a non-existent city you will see something like this:
 
 By clicking the `Return to the homepage` button you will be redirect to the landing page.
 
+For this project I implemented 8 types of themes: clear sky, cloudy, rain, snow, for both night and day.
+
+- Down below you can see 4 different types of themes for day:
+
+![day-themes](https://user-images.githubusercontent.com/72908672/231219191-295b4974-6221-4375-a445-bbd7c814dd19.jpg)
+
+- And here you can see 4 different types of themes for night:
+
+![night-themes](https://user-images.githubusercontent.com/72908672/231219228-ba451fab-4740-46a1-8005-552e6a12e54d.jpg)
 
 # WeatherAPP
 
