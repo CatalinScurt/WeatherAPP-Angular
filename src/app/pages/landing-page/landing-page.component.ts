@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherService } from 'src/app/services/weather.service';
 import { Weather } from 'src/app/interfaces/Weather';
 import { ThemeService } from 'src/app/services/theme.service';
-import { day, night } from 'src/app/theme';
+import { day, night } from 'src/theme';
 
 @Component({
   selector: 'app-landing-page',

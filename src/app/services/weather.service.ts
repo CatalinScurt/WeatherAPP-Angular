@@ -5,7 +5,7 @@ import { Current, Weather } from '../interfaces/Weather';
 import { ThemeService } from './theme.service';
 import { codeToTheme } from 'src/CodeToTheme';
 import { Theme } from '../interfaces/Theme';
-import { day, night } from '../theme';
+import { day, night } from '../../theme';
 
 @Injectable({
   providedIn: 'root'
