@@ -53,5 +53,6 @@ You cand clone this project and run the app localy, and to do this, you need to 
 ## Functionality:
 
 When you run the application for the first time, a message will apear on the top-left corner, and ask for your permission to access your location. If you accept, you will be redirected to the landing page where you will see the weather for your current location. If you don't accept, you can click on the link from page content to go on the page with weather for the default location (this location is Cluj-Napoca).
+![landing-page-description](https://user-images.githubusercontent.com/72908672/231164375-4b8c6a1f-f356-4f48-ac08-32553f4e22f5.jpg)
 
 On this page you can add a city to the favorite list by clicking the top-right heart, and from the same icon you can delete a city from favorite list. This list will apear on the right side, under the location.
