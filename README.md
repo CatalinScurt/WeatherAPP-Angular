@@ -15,8 +15,10 @@
 
 ## To run this application:
 
-You can access the next link to see the live version: https://weather-app-angular.web.app
+You can access the next link to see the live version: https://weather-project-angular.web.app
+
 - `OR...`
+
 You cand clone this project and run the app locally, and to do this, you need to make the following steps:
 - run: git clone https://github.com/CatalinScurt/WeatherAPP-Angular.git
 - after the clone you need to run "npm install" on the root directory.
