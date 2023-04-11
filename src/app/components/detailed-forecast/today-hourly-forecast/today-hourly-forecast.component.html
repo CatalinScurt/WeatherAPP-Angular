@@ -1,0 +1,17 @@
+<section class="weather-today-wrapper" *ngIf="weather">
+    <div class="weather-right-now">
+        <p>Right Now</p>
+        <img src="http:{{weather.current.condition.icon}}" alt="Right now-weather-{{weather.current.condition.text}}">
+        <p>{{Math.round(weather.current.temp_c)}} &#8451;</p>
+    </div>
+    <div *ngFor="let todayWeather of weather.forecast.forecastday[0].hour; let i = index"
+        class="{{Number(todayWeather.time.split(' ')[1].slice(0,2))>Number(weather.current.last_updated.split(' ')[1].slice(0,2))? 'equal':''}}">
+        <span
+            *ngIf="Number(todayWeather.time.split(' ')[1].slice(0,2))>Number(weather.current.last_updated.split(' ')[1].slice(0,2))">
+            <p> {{todayWeather.time.split(' ')[1]}}</p>
+            <img src="https:{{todayWeather.condition.icon}}"
+                alt="Today-{{todayWeather.time.split(' ')[1]}}-weather-{{todayWeather.condition.text}}">
+            <p>{{Math.round(todayWeather.temp_c)}} &#8451;</p>
+        </span>
+    </div>
+</section>

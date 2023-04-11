@@ -1,8 +1,11 @@
 <section class="search-modal-wrapper" (click)="handleOnCloseSearchModal()">
     <div class="search-modal-content {{closing ? 'slide-back':''}}" (click)="stopPropagation($event)">
-        <fa-icon [icon]="faWindowClose" class="close-icon" (click)="handleOnCloseSearchModal()"></fa-icon>
-        <input type="text" class="search-input" placeholder="Type a location here..."
-            (keyup)="handleChangeSearchInput($event)">
-        <button class="search-button" (click)="searchForLocation()">Search</button>
+        <i class="uil uil-times" (click)="handleOnCloseSearchModal()"></i>
+        <label for="search-input">Search for a location below:</label>
+        <div class="search-content">
+            <input type="text" class="search-input" placeholder="Type a location here..." name="search-input"
+                (keyup)="handleChangeSearchInput($event)">
+            <button class="search-button" (click)="searchForLocation()">Search</button>
+        </div>
     </div>
 </section>

@@ -9,50 +9,63 @@
     animation: getting-dark .5s linear forwards;
 
     .search-modal-content {
-        background-color: white;
+        background-color: rgba(255, 255, 255, 0.8);
         border-radius: 10px;
         top: -200px;
         height: 200px;
         width: 400px;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: center;
         position: relative;
         animation: slide-down .5s linear forwards;
 
-        .close-icon {
+        .uil-times {
             position: absolute;
             top: 15px;
             right: 15px;
+            font-size: 18px;
             cursor: pointer;
 
             &:hover {
-                font-size: 20px;
                 color: red;
             }
         }
 
-        .search-input {
-            width: 250px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid gray;
+        label {
+            margin: 0px 0px 10px 30px;
+            font-weight: 600;
         }
 
-        .search-button {
-            background-color: black;
-            color: white;
-            height: 35px;
-            border: none;
-            font-weight: 600;
-            margin-left: 5px;
-            border-radius: 5px;
-            cursor: pointer;
+        .search-content {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-            &:hover {
-                background-color: white;
-                border: 1px solid black;
-                color: black;
+            .search-input {
+                width: 60%;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid gray;
+            }
+
+            .search-button {
+                background-color: black;
+                color: white;
+                height: 35px;
+                border: none;
+                font-weight: 600;
+                margin-left: 5px;
+                border-radius: 5px;
+                padding: 5px 20px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: white;
+                    border: 1px solid black;
+                    color: black;
+                }
             }
         }
     }
@@ -76,5 +89,16 @@
 @keyframes getting-dark {
     100% {
         background-color: rgba(0, 0, 0, 0.3);
+    }
+}
+
+@media (max-width:500px) {
+    .search-modal-content {
+        width: 300px !important;
+        background-color: white !important;
+
+        label {
+            margin-left: 5px !important;
+        }
     }
 }

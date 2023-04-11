@@ -10,34 +10,18 @@ import { WeatherService } from 'src/app/services/weather.service';
 })
 export class DetailedForecastComponent implements OnInit {
 
-  weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-  currentDay = new Date().getDay()
-
   constructor(
     private route: ActivatedRoute,
     private weatherService: WeatherService
   ) {
     this.route.params.subscribe((params) => {
-      if (params['city']) {
-        console.log(params['city'])
-        this.routeParam = params['city']
-      }
-    })
-
-    this.weatherService.handleOnSetWeather.subscribe((data: Weather) => {
-      this.weather = this.weatherFilter(JSON.parse(JSON.stringify(data)) as Weather) // send for filter a copy of object
+      if (params['city']) this.routeParam = params['city']
     })
   }
-  Number = Number
-  Math = Math
+
   routeParam: string = ''
-  currentPosition: number = 100
-
   weather?: Weather
-
-
-  list12 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2]
-  list6 = [1, 2, 3, 4, 5, 6]
+  requestError: boolean = false
 
   ngOnInit(): void {
     this.setWeather()
@@ -46,14 +30,17 @@ export class DetailedForecastComponent implements OnInit {
   setWeather = () => {
     this.routeParam.toLocaleLowerCase() === this.weatherService.weather?.location.name.toLocaleLowerCase() ?
       this.weather = this.weatherFilter(JSON.parse(JSON.stringify(this.weatherService.weather)) as Weather) :
-      this.weatherService.getWeather(this.routeParam)
+      this.weatherService.getWeather(this.routeParam).subscribe({
+        next: (response: Weather) => this.weather = this.weatherFilter(JSON.parse(JSON.stringify(response)) as Weather), // send for filter a copy of object
+        error: (error: any) => this.requestError = true
+      })
   }
 
   /**
-       * weather filter Function
-       * @param data data in Weather format (with 24 hour items array)
-       * @returns data in Weather format (with 12 hour items array)
-       */
+   * weather filter Function
+   * @param data data in Weather format (with 24 hour items array)
+   * @returns data in Weather format (with 12 hour items array)
+   */
   weatherFilter = (data: Weather) => {  //this function changes the forecast from every hour to every two hours
     let toReturn = data
     let dailyWeather = toReturn.forecast.forecastday
@@ -63,18 +50,5 @@ export class DetailedForecastComponent implements OnInit {
     }
     toReturn.forecast.forecastday = dailyWeather
     return toReturn
-  }
-
-  handleOnClickNextDay = () => {
-    this.weather && this.currentPosition < (this.weather?.forecast.forecastday.length - 1) * 100 ? this.currentPosition += 100 : this.currentPosition = 100
-    console.log(this.currentPosition)
-
-  }
-  handleOnClickPrevDay = () => {
-    (this.currentPosition > 100) ? (this.currentPosition -= 100) : (this.currentPosition = ((this.weather?.forecast.forecastday.length || 0) - 1) * 100)
-  }
-
-  getPosition = () => {
-    return { 'transform': `translateX(${-this.currentPosition}%)` }
   }
 }

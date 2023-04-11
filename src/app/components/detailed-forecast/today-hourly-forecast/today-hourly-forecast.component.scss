@@ -1,0 +1,125 @@
+.weather-today-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    color: white;
+    padding-top: 100px;
+
+    .weather-right-now {
+        width: 12%;
+        background-color: rgba(15, 15, 15, 0.7);
+        text-align: center;
+        padding: 20px 0px;
+    }
+
+    .equal {
+        width: 8%;
+        background-color: rgba(15, 15, 15, 0.7);
+        text-align: center;
+        padding: 20px 0px;
+    }
+
+    :first-child {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    :last-child {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}
+
+@media (max-width:800px) {
+    .equal {
+        img {
+            width: 50px;
+            margin-top: 10px;
+        }
+
+        :last-child {
+            margin-top: 4px;
+        }
+    }
+}
+
+@media (max-width:650px) {
+    .weather-right-now {
+        padding-top: 10px !important;
+    }
+
+    .equal {
+        img {
+            width: 50px;
+            margin-top: 13px;
+        }
+
+        :last-child {
+            margin-top: 8px;
+        }
+    }
+}
+
+@media (max-width:550px) {
+    .weather-today-wrapper {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 70px;
+
+        .weather-right-now {
+            width: 60%;
+            display: flex;
+            flex-direction: row;
+            border-radius: 5px 5px 0px 0px;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 0;
+
+            p {
+                font-weight: 600;
+                font-size: 20px;
+                width: 50px;
+            }
+
+            img {
+                width: 80px;
+            }
+        }
+
+        .equal {
+            width: 60%;
+            border-radius: 0;
+            padding: 0;
+
+            span {
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-evenly;
+
+                img {
+                    margin: 0;
+                    width: 50px;
+                }
+            }
+
+            &:last-child {
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+        }
+    }
+}
+
+@media (max-width: 380px) {
+    .weather-right-now {
+        width: 80% !important;
+    }
+
+    .equal {
+        width: 80% !important;
+    }
+}

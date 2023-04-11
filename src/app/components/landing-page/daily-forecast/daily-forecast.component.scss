@@ -1,0 +1,63 @@
+.daily-forecast {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 0;
+    padding: 10px 0px;
+
+    .day.today {
+        border-right: 2px solid gray;
+    }
+
+    .day {
+        flex: 1;
+        text-align: center;
+
+        >* {
+            padding-top: 7px;
+        }
+
+        &:first-child {
+            flex: 2;
+        }
+
+        .date {
+            color: white;
+        }
+
+        img {
+            width: 70px;
+        }
+
+        .temp {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    }
+
+}
+
+@media (max-width:550px) {
+    .day {
+        img {
+            width: 50px !important;
+        }
+    }
+}
+
+@media (max-width:400px) {
+    .day {
+        padding: 10px 0;
+
+        img {
+            width: 35px !important;
+        }
+
+        .temp {
+            font-size: 14px !important;
+        }
+    }
+}

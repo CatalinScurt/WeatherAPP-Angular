@@ -1,53 +1,9 @@
-<div class="landing-page">
-    <section *ngIf="weather" class="landing-page-wrapper">
+<div class="current-forecast-wrapper">
+    <section *ngIf="weather" class="current-forecast-content">
         <fa-icon [icon]="faHeart" class="heart" [ngStyle]="getHeartColor()"
             (click)="handleOnClickHeartButton()"></fa-icon>
-        <div class="current-forecast">
-            <div class="main-content">
-                <h1 class="temp">{{math.round(weather.current.temp_c)}} &#8451;</h1>
-                <div class="right-now">
-                    <img src="https:{{weather.current.condition.icon}}" alt="">
-                    <!-- <fa-icon [icon]="currentForecastIcon" class="current-weather-icon"></fa-icon> -->
-                    <h2 class="weather-name">{{weather.current.condition.text}}</h2>
-                </div>
-                <p class="humidity-label">Humidity:
-                    <span class="humidity">{{weather.current.humidity}} %</span>
-                </p>
-                <p class="air-pressure-label">Air Pressure:
-                    <span class="air-pressure">{{weather.current.pressure_mb}} mb</span>
-                </p>
-                <p class="wind-speed-label">Wind Speed:
-                    <span class="wind-speed">{{weather.current.wind_kph}} km/h</span>
-                </p>
-                <button class="details-button"
-                    routerLink="{{routeParam ? 'details' : 'city/'+weather.location.name+'/details'}}">More
-                    details</button>
-            </div>
-            <div class="secondary-content">
-                <div class="city-content">
-                    <i class="uil uil-location-pin-alt"></i>
-                    <span class="city-name">{{weather.location.name}}</span>
-                </div>
-
-                <!-- <fa-icon [icon]="faMapMarkerAlt" class="location-icon" (click)="openSearchModal()"></fa-icon> -->
-                <div class="search-content" (click)="openSearchModal()">
-                    <i class="uil uil-search"></i>
-                    <span>Search for another location</span>
-                </div>
-
-                <div *ngIf="favoriteCities.length>0" class="favorite-cities-list">
-                    <p *ngFor="let city of favoriteCities; let i = index" class="favorite-city"
-                        routerLink="/city/{{favoriteCities[i]}}">{{city}}</p>
-                </div>
-
-            </div>
-        </div>
-        <div class="daily-forecast">
-            <div *ngFor="let day of weather.forecast.forecastday; let i = index" class="day">
-                <p class="date">{{i===0 ?'Today' : weekDays[(currentDay+i)%7].slice(0,3) }}</p>
-                <img src="https:{{day.day.condition.icon}}" alt="">
-                <p class="temp">{{math.round(day.day.maxtemp_c)}} &#8451;</p>
-            </div>
-        </div>
+        <app-today-details [weather]="weather" [routeParam]="routeParam" [favoriteCities]="favoriteCities"
+            (handleOnOpenSearchModal)="openSearchModal($event)"></app-today-details>
+        <app-daily-forecast [weather]="weather"></app-daily-forecast>
     </section>
 </div>

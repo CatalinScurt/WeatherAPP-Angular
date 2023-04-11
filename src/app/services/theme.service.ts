@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { day, night } from '../theme';
 import { Theme } from '../interfaces/Theme';
 
 @Injectable({
