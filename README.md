@@ -15,7 +15,7 @@
 
 ## To run this application:
 
-You can access the next link to see the live version: https://weather-project-angular.web.app
+You can access the following link to see the live version: https://weather-project-angular.web.app
 
 - `OR...`
 
