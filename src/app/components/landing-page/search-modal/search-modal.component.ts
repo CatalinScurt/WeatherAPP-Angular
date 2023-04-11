@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { faWindowClose } from '@fortawesome/free-regular-svg-icons';
-import { } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-search-modal',
@@ -10,14 +9,13 @@ import { } from '@fortawesome/free-solid-svg-icons';
 })
 export class SearchModalComponent implements OnInit {
 
-  constructor(private route: Router) { }
-
-  searchInputValue: string = ''
   faWindowClose = faWindowClose
 
-  closing: boolean = false
+  constructor(private route: Router) { }
 
   @Output() updateSearchModalState = new EventEmitter<boolean>()
+  searchInputValue: string = ''
+  closing: boolean = false
 
   ngOnInit(): void {
   }
@@ -42,7 +40,4 @@ export class SearchModalComponent implements OnInit {
   stopPropagation = (event: MouseEvent) => {
     event.stopPropagation()
   }
-
-
-
 }

@@ -2,17 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { CityPageComponent } from './pages/city-page/city-page.component';
-import { TestComponent } from './pages/test/test.component';
 import { DetailedForecastComponent } from './pages/detailed-forecast/detailed-forecast.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'city/:city', component: CityPageComponent },
   { path: 'city/:city/details', component: DetailedForecastComponent },
-  { path: 'test', component: TestComponent },
   { path: '**', component: LandingPageComponent },
-  // { path: ':city', component: pagina noua, randez current forecast in ea }
-
 ];
 
 @NgModule({

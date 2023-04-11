@@ -10,6 +10,8 @@ export interface weather {
     '--background-cover': string,
     '--background-image': string,
     '--background-position': string,
-    '--background-color': string,
-    '--text-color': string
+    '--primary-color': string,
+    '--secondary-color': string,
+    '--box-shadow-shape': string,
+    '--background-color': string
 }

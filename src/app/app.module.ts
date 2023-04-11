@@ -13,8 +13,12 @@ import { CurrentForecastComponent } from './components/landing-page/current-fore
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CityPageComponent } from './pages/city-page/city-page.component';
 import { SearchModalComponent } from './components/landing-page/search-modal/search-modal.component';
-import { TestComponent } from './pages/test/test.component';
 import { DetailedForecastComponent } from './pages/detailed-forecast/detailed-forecast.component';
+import { DailySliderComponent } from './components/detailed-forecast/daily-slider/daily-slider.component';
+import { TodayHourlyForecastComponent } from './components/detailed-forecast/today-hourly-forecast/today-hourly-forecast.component';
+import { TodayDetailsComponent } from './components/landing-page/today-details/today-details.component';
+import { DailyForecastComponent } from './components/landing-page/daily-forecast/daily-forecast.component';
+import { CityNotFoundComponent } from './components/city-not-found/city-not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +28,12 @@ import { DetailedForecastComponent } from './pages/detailed-forecast/detailed-fo
     CurrentForecastComponent,
     CityPageComponent,
     SearchModalComponent,
-    TestComponent,
     DetailedForecastComponent,
+    DailySliderComponent,
+    TodayHourlyForecastComponent,
+    TodayDetailsComponent,
+    DailyForecastComponent,
+    CityNotFoundComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,25 @@
+<section class="slider-wrapper" *ngIf="weather">
+    <h1 class="weather-next-label">Weather for the next 7 days:</h1>
+    <button (click)="handleOnClickNextDay()" class="next-button">
+        {{weekDaysWithoutToday[(currentDay+currentPosition/100)%6]}}
+        <i class="uil uil-angle-right-b"></i>
+    </button>
+    <button (click)="handleOnClickPrevDay()" class="prev-button">
+        <i class="uil uil-angle-left-b"></i>
+        {{weekDaysWithoutToday[(currentDay+currentPosition/100-2)%6]}}
+    </button>
+    <section class="slider-container">
+        <p class="slider-displayed-day">{{weekDaysWithoutToday[(currentDay+currentPosition/100-1)%6]}}</p>
+        <div *ngFor="let weather of weather.forecast.forecastday; let i=index" class="slider-content"
+            [ngStyle]="getPosition()">
+            <div *ngFor="let hourWeather of weather.hour" class="hourly-weather">
+                <span *ngIf="i>0">
+                    <p> {{hourWeather.time.split(' ')[1]}}</p>
+                    <img src="https:{{hourWeather.condition.icon}}"
+                        alt="{{weekDaysWithoutToday[(currentDay+currentPosition/100-1)%6]}}-{{hourWeather.time.split(' ')[1]}}-weather-{{hourWeather.condition.text}}">
+                    <p>{{Math.round(hourWeather.temp_c)}} &#8451;</p>
+                </span>
+            </div>
+        </div>
+    </section>
+</section>

@@ -1,0 +1,8 @@
+<div class="daily-forecast" *ngIf="weather">
+    <div *ngFor="let day of weather.forecast.forecastday; let i = index" class="day {{i===0? 'today':''}}">
+        <p class="date">{{i===0 ?'Today' : weekDays[(currentDay+i)%7].slice(0,3)}}</p>
+        <img src="https:{{day.day.condition.icon}}"
+            alt="{{i===0 ?'Today' : weekDays[(currentDay+i)%7]}}-weather-{{day.day.condition.text}}">
+        <p class="temp">{{Math.round(day.day.maxtemp_c)}} &#8451;</p>
+    </div>
+</div>

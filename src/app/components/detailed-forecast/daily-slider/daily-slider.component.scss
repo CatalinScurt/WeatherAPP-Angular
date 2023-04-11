@@ -1,0 +1,179 @@
+.slider-wrapper {
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 30px;
+
+    .weather-next-label {
+        position: absolute;
+        color: white;
+        top: -50px;
+        left: 20px;
+    }
+
+    .next-button {
+        position: absolute;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        width: 130px;
+        padding: 7px 0px;
+        font-weight: 600;
+        right: 0;
+        top: 10px;
+        z-index: 1;
+        cursor: pointer;
+        text-align: center;
+        transition: all .3s linear;
+        border-radius: 5px 0px 0px 5px;
+        border: none;
+        outline: none;
+
+        i {
+            font-size: 18px;
+        }
+
+        &:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+    }
+
+    .prev-button {
+        position: absolute;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        width: 130px;
+        padding: 7px 0px;
+        font-weight: 600;
+        left: 0;
+        top: 10px;
+        z-index: 1;
+        cursor: pointer;
+        text-align: center;
+        transition: all .3s linear;
+        border-radius: 0px 5px 5px 0px;
+        border: none;
+        outline: none;
+
+        i {
+            font-size: 18px;
+        }
+
+        &:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+    }
+
+    .slider-container {
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+        overflow: hidden;
+        padding-top: 50px;
+
+        .slider-displayed-day {
+            position: absolute;
+            color: white;
+            font-weight: 600;
+            font-size: 20px;
+            top: 0;
+            left: 0;
+            margin: 8px 0px 0px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .slider-content {
+            transform: translateX(-100%);
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            margin: auto;
+            flex-shrink: 0;
+            transition: transform 0.5s ease-in-out;
+            -webkit-transition: transform 0.5s ease-in-out;
+
+            .hourly-weather {
+                color: white;
+                text-align: center;
+                width: 8.33%;
+
+                p {
+                    &:last-child {
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width:950px) {
+    .slider-container {
+        width: 96% !important;
+
+        img {
+            width: 50px;
+            height: auto;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    }
+}
+
+@media (max-width:700px) {
+    .slider-wrapper {
+        padding-bottom: 20px;
+
+        .slider-content {
+            flex-wrap: wrap;
+
+            .hourly-weather {
+                margin-bottom: 10px;
+                width: 16.66% !important;
+            }
+        }
+    }
+}
+
+@media (max-width:400px) {
+    .next-button {
+        font-size: 12px;
+        padding: 5px 0px;
+        width: 90px !important;
+
+        i {
+            font-size: 14px !important;
+        }
+    }
+
+    .prev-button {
+        font-size: 12px;
+        padding: 5px 0px;
+        width: 90px !important;
+
+        i {
+            font-size: 14px !important;
+        }
+    }
+
+    .slider-displayed-day {
+        font-size: 18px !important;
+    }
+
+    .hourly-weather {
+        p {
+            font-size: 16px !important;
+        }
+    }
+}

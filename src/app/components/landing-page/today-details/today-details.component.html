@@ -1,0 +1,37 @@
+<section class="current-forecast-wrapper" *ngIf="weather">
+    <section class="main-content">
+        <h1 class="temp">{{Math.round(weather.current.temp_c)}} &#8451;</h1>
+        <div class="forecast-right-now">
+            <img src="https:{{weather.current.condition.icon}}"
+                alt="Right now-weather-{{weather.current.condition.text}}">
+            <h2 class="weather-name">{{weather.current.condition.text}}</h2>
+        </div>
+        <p class="humidity-label">Humidity:
+            <span class="humidity">{{weather.current.humidity}} %</span>
+        </p>
+        <p class="air-pressure-label">Air Pressure:
+            <span class="air-pressure">{{weather.current.pressure_mb}} mb</span>
+        </p>
+        <p class="wind-speed-label">Wind Speed:
+            <span class="wind-speed">{{weather.current.wind_kph}} km/h</span>
+        </p>
+        <button class="details-button"
+            routerLink="{{routeParam ? 'details' : 'city/'+weather.location.name+'/details'}}">More
+            details</button>
+    </section>
+    <section class="secondary-content">
+        <div class="city-content">
+            <i class="uil uil-location-pin-alt"></i>
+            <span class="city-name">{{weather.location.name}}</span>
+        </div>
+        <button class="search-content" (click)="openSearchModal()">
+            <i class="uil uil-search"></i>
+            <span>Search a location</span>
+        </button>
+        <p *ngIf="favoriteCities && favoriteCities.length>0" class="favorite-city-label">Favorite cities:</p>
+        <div *ngIf="favoriteCities && favoriteCities.length>0" class="favorite-cities-list">
+            <button *ngFor="let city of favoriteCities; let i = index" class="favorite-city"
+                routerLink="/city/{{favoriteCities[i]}}">{{city}}</button>
+        </div>
+    </section>
+</section>

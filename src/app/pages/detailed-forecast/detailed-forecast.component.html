@@ -1,77 +1,16 @@
-<!-- <section class="page-wrapper" *ngIf="weather">
-    <div class="weather-today">
-        <div class="weather-right-now">
-            <p>Right Now</p>
-            <img src="http:{{weather.current.condition.icon}}" alt="">
-            <p>{{weather.current.temp_c}} &#8451;</p>
+<ng-template [ngIf]="!requestError" [ngIfElse]="cityNotFound">
+    <section class="details-page-wrapper" *ngIf="weather">
+        <div class="details-page-content">
+            <button class="back-button" routerLink="/city/{{routeParam}}">
+                <i class="uil uil-corner-up-left"></i>
+                <span>Back</span>
+            </button>
+            <app-today-hourly-forecast [weather]="weather"></app-today-hourly-forecast>
+            <app-daily-slider [weather]="weather"></app-daily-slider>
         </div>
-        <div *ngFor="let todayWeather of weather.forecast.forecastday[0].hour; let i = index; let even = even"
-            class="weather-cart {{even && Number(todayWeather.time.split(' ')[1].slice(0,2))>Number(weather.current.last_updated.split(' ')[1].slice(0,2)) ? 'even':''}}">
-            <span
-                *ngIf="even && Number(todayWeather.time.split(' ')[1].slice(0,2))>Number(weather.current.last_updated.split(' ')[1].slice(0,2))">
-                <p> {{todayWeather.time.split(' ')[1]}}</p>
-                <img src="https:{{todayWeather.condition.icon}}" alt="">
-                <p>{{Math.round(todayWeather.temp_c)}} &#8451;</p>
-            </span>
-        </div>
-    </div>
+    </section>
+</ng-template>
 
-    <div class="future-weather">
-        <h1>Weather for next days:</h1>
-        <div *ngFor="let weather of weather.forecast.forecastday; let i=index" class="daily-weather">
-            <div *ngFor="let hourWeather of weather.hour;let even = even" class="hourly-weather {{even ? 'even':''}}">
-                <span *ngIf="even && i>0">
-                    <p> {{hourWeather.time.split(' ')[1]}}</p>
-                    <img src="https:{{hourWeather.condition.icon}}" alt="">
-                    <p>{{Math.round(hourWeather.temp_c)}} &#8451;</p>
-                </span>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-<section class="page-wrapper" *ngIf="weather">
-    <div class="page-container-wrapper">
-        <div class="weather-today">
-            <div class="weather-right-now">
-                <p class="right-now">Right Now</p>
-                <img src="http:{{weather.current.condition.icon}}" alt="">
-                <p>{{weather.current.temp_c}} &#8451;</p>
-            </div>
-            <div *ngFor="let todayWeather of weather.forecast.forecastday[0].hour; let i = index"
-                class="weather-cart {{Number(todayWeather.time.split(' ')[1].slice(0,2))>Number(weather.current.last_updated.split(' ')[1].slice(0,2))? 'equal':''}}">
-                <span
-                    *ngIf="Number(todayWeather.time.split(' ')[1].slice(0,2))>Number(weather.current.last_updated.split(' ')[1].slice(0,2))">
-                    <p> {{todayWeather.time.split(' ')[1]}}</p>
-                    <img src="https:{{todayWeather.condition.icon}}" alt="">
-                    <p>{{Math.round(todayWeather.temp_c)}} &#8451;</p>
-                </span>
-            </div>
-        </div>
-
-        <div class="future-weather">
-            <h1 class="weather-next-label">Weather for the next 7 days:</h1>
-            <span (click)="handleOnClickNextDay()" class="next-button">
-                {{weekDays[(currentPosition/100)%6]}}
-                <i class="uil uil-angle-right-b"></i>
-            </span>
-            <span (click)="handleOnClickPrevDay()" class="prev-button">
-                <i class="uil uil-angle-left-b"></i>
-                {{weekDays[(currentPosition/100+4)%6]}}
-            </span>
-            <div class="slider">
-                <div *ngFor="let weather of weather.forecast.forecastday; let i=index" class="daily-weather"
-                    [ngStyle]="getPosition()">
-                    <p class="slider-displayed-day">{{weekDays[(currentDay+i)%7]}}</p>
-                    <div *ngFor="let hourWeather of weather.hour" class="hourly-weather equal">
-                        <span *ngIf="i>0">
-                            <p> {{hourWeather.time.split(' ')[1]}}</p>
-                            <img src="https:{{hourWeather.condition.icon}}" alt="">
-                            <p>{{Math.round(hourWeather.temp_c)}} &#8451;</p>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<ng-template #cityNotFound>
+    <app-city-not-found></app-city-not-found>
+</ng-template>

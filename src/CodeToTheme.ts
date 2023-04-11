@@ -11,7 +11,7 @@ export const codeToTheme = {
     '1087': 'rain',
     '1114': 'snow',
     '1117': 'snow',
-    '1136': 'cloudy',
+    '1135': 'cloudy',
     '1147': 'cloudy',
     '1150': 'rain',
     '1153': 'rain',
